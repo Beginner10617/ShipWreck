@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
 	public float safeHeight;
 	float damage;
 	List<int> keys;
+	GameObject door;
+	Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -60,10 +62,11 @@ public class Player : MonoBehaviour
 		}
 		if(other.gameObject.CompareTag("door"))
 		{
-			Debug.Log(keys);
 			if(keys.Contains(other.gameObject.GetComponent<Key>().number))
 			{
-				Destroy(other.gameObject);
+				door = other.gameObject;
+				Destroy(door.GetComponent<BoxCollider2D>());
+				Open();
 			}
 		}
 	}
@@ -72,5 +75,15 @@ public class Player : MonoBehaviour
 			currentHealth -= damage;
 
 			healthBar.SetHealth(currentHealth);
+	}
+	void Open()
+	{
+		animator = door.GetComponent<Animator>();
+		animator.SetFloat("Blend", 1);
+		Invoke("StayOpen", 1f); 
+	}
+	void StayOpen()
+	{
+		animator.SetFloat("Blend", 2f);
 	}
 }
