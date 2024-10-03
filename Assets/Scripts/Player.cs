@@ -13,10 +13,12 @@ public class Player : MonoBehaviour
 	public float Heal;
 	public float safeHeight;
 	float damage;
+	List<int> keys;
 
     // Start is called before the first frame update
     void Start()
     {
+		keys = new List<int>();
 		currentHealth = maxHealth*(0.9999f);
 		healthBar.SetMaxHealth(maxHealth);
     }
@@ -50,6 +52,19 @@ public class Player : MonoBehaviour
 		if(other.gameObject.CompareTag("coin"))
 		{
 			Destroy(other.gameObject);
+		}
+		if(other.gameObject.CompareTag("key"))
+		{
+			keys.Add(other.gameObject.GetComponent<Key>().number);
+			Destroy(other.gameObject);
+		}
+		if(other.gameObject.CompareTag("door"))
+		{
+			Debug.Log(keys);
+			if(keys.Contains(other.gameObject.GetComponent<Key>().number))
+			{
+				Destroy(other.gameObject);
+			}
 		}
 	}
 	void TakeDamage(float damage)
