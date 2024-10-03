@@ -30,15 +30,14 @@ public class PlayerController : MonoBehaviour
 
         // Move the player
         Vector3 movement = new Vector3(moveHorizontal,moveVertical, 0.0f );
-        if(moveHorizontal*move < 0)
-        {
-            move = moveHorizontal/Mathf.Abs(moveHorizontal);
-            GetComponent<SpriteRenderer>().sprite = Sprites[1];
-            transform.localScale = new Vector3(move, 1, 1);
-        }
-        else if(moveHorizontal == 0)
+        if(moveHorizontal == 0)
         {
             GetComponent<SpriteRenderer>().sprite = Sprites[0];
+        }
+        else if(moveHorizontal != 0)
+        {
+            GetComponent<SpriteRenderer>().sprite = Sprites[1];
+            transform.localScale = new Vector3(moveHorizontal/Mathf.Abs(moveHorizontal), 1, 1);
         }
         transform.Translate(Vector3.Normalize(movement) * speed * Time.deltaTime, Space.World);
     }
