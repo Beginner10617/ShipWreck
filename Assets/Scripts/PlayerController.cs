@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
     private bool axesInverted = false;
+    public List<Sprite> Sprites;
+    float move=1;
 
     void Update()
     {
@@ -28,6 +30,16 @@ public class PlayerController : MonoBehaviour
 
         // Move the player
         Vector3 movement = new Vector3(moveHorizontal,moveVertical, 0.0f );
-        transform.Translate(movement * speed * Time.deltaTime, Space.World);
+        if(moveHorizontal*move < 0)
+        {
+            move = moveHorizontal/Mathf.Abs(moveHorizontal);
+            GetComponent<SpriteRenderer>().sprite = Sprites[1];
+            transform.localScale = new Vector3(move, 1, 1);
+        }
+        else if(moveHorizontal == 0)
+        {
+            GetComponent<SpriteRenderer>().sprite = Sprites[0];
+        }
+        transform.Translate(Vector3.Normalize(movement) * speed * Time.deltaTime, Space.World);
     }
 }

@@ -31,7 +31,6 @@ public class Fish_Behaviour : MonoBehaviour
             time = 0;
             random = Random.value;
             Point = random * StartPoint + (1-random) * EndPoint;
-            Debug.Log(Point);
             transform.localScale = Vector3.Normalize(transform.position - Point) + new Vector3(0,1,1);
         }
         else if(Vector2.Distance(Point,transform.position)>minimum_vicinity)
