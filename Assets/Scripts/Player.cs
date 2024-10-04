@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 	List<int> keys;
 	GameObject door;
 	Animator animator;
+	bool haveTreasure;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
 		keys = new List<int>();
 		currentHealth = maxHealth*(0.9999f);
 		healthBar.SetMaxHealth(maxHealth);
+		haveTreasure = false;
     }
 
     // Update is called once per frame
@@ -41,12 +43,18 @@ public class Player : MonoBehaviour
 		{
 			TakeDamage(damage*Time.deltaTime);
 		}
+		else if(currentHealth >= maxHealth)
+		{
+			currentHealth = maxHealth * 0.9999f;
+		}
 		else if(currentHealth==0)
 		{
-			Application.Quit(0);
+			//Lost
 		}
-		else if(currentHealth >= maxHealth)
-		{currentHealth = maxHealth * 0.9999f;}
+		if(damage > 0 && haveTreasure)
+		{
+			//won
+		}
     }
 
 	void OnCollisionEnter2D(Collision2D other)
@@ -68,6 +76,10 @@ public class Player : MonoBehaviour
 				Destroy(door.GetComponent<BoxCollider2D>());
 				Open();
 			}
+		}
+		if(other.gameObject.CompareTag("treasure"))
+		{
+			haveTreasure=true;
 		}
 	}
 	void TakeDamage(float damage)
