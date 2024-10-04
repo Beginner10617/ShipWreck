@@ -15,6 +15,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] public AudioClip Movement;
     [SerializeField] public AudioClip BackgroundClip;
     [SerializeField] public AudioClip Coin;
+
+    [SerializeField] public AudioClip Click;
     void Start()
     {
         background.clip = BackgroundClip;
