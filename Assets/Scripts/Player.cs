@@ -65,10 +65,12 @@ public class Player : MonoBehaviour
 		}
 		if(damage < 0 && haveTreasure)
 		{
+			GetComponent<PlayerController>().speed = 0f;
 			WinText.SetActive(true);
 		}
 		if(currentHealth < maxHealth * 0.2f && !SFX.isPlaying)
 		{
+			GetComponent<PlayerController>().speed = 0f;
 			SFX.PlayOneShot(Warning);
 		}
     }
