@@ -60904,6 +60904,7 @@ MonoBehaviour:
   Movement: {fileID: 8300000, guid: 58ad407b477b448fdbec3319a7759893, type: 3}
   BackgroundClip: {fileID: 8300000, guid: 35624ea871f0b48eb8f820559fa7de97, type: 3}
   Coin: {fileID: 8300000, guid: 01d9177f199d14719a6285d2ff3e1715, type: 3}
+  Click: {fileID: 0}
 --- !u!4 &761992534
 Transform:
   m_ObjectHideFlags: 0
@@ -72240,7 +72241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
