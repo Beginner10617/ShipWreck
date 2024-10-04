@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
 		}
 		else if(currentHealth<=0)
 		{
+			GetComponent<PlayerController>().speed = 0f;
 			LoseText.SetActive(true);
 		}
 		if(damage < 0 && haveTreasure)
@@ -70,7 +71,6 @@ public class Player : MonoBehaviour
 		}
 		if(currentHealth < maxHealth * 0.2f && !SFX.isPlaying)
 		{
-			GetComponent<PlayerController>().speed = 0f;
 			SFX.PlayOneShot(Warning);
 		}
     }

@@ -635,10 +635,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ready to dive deep? The player takes the plunge into the abyss, searching
-    for a legendary treasure from a famous historic ship that... well, didn\u2019t
-    quite stick the landing. Navigate the shipwreck,  and don\u2019t forget to complete
-    your quest while keeping an eye on your oxygen levels"
+  m_text: "Ready to dive deep? The player takes the plunge into the abyss, on the
+    hunt for legendary treasure from a famous historic ship that\u2026 well, let\u2019s
+    just say it didn\u2019t quite master the whole 'staying afloat' thing. Navigate
+    the shipwreck, grab the treasure, and if you can make it to the surface without
+    turning into a bubble, it\u2019s all yours!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
