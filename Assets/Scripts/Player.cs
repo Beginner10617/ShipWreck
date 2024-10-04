@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 	bool haveTreasure;
 	public AudioManager audioManager;
     AudioSource SFX;
-    AudioClip Coin, Treasure, DoorOpen;
+    AudioClip Coin, Treasure, DoorOpen, Warning;
 
 
     // Start is called before the first frame update
@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
         Coin = audioManager.Coin;
 		Treasure = audioManager.Treasure;
 		DoorOpen = audioManager.DoorOpen;
+		Warning = audioManager.Warning;
     }
 
     // Update is called once per frame
@@ -63,6 +64,10 @@ public class Player : MonoBehaviour
 		if(damage > 0 && haveTreasure)
 		{
 			//won
+		}
+		if(currentHealth < maxHealth * 0.2f && !SFX.isPlaying)
+		{
+			SFX.PlayOneShot(Warning);
 		}
     }
 
