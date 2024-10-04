@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 	public float Damage;
 	public float Heal;
 	public float safeHeight;
+	public GameObject WinText;
+	public GameObject LoseText;
 	float damage;
 	List<int> keys;
 	GameObject door;
@@ -57,13 +59,13 @@ public class Player : MonoBehaviour
 		{
 			currentHealth = maxHealth * 0.9999f;
 		}
-		else if(currentHealth==0)
+		else if(currentHealth<=0)
 		{
-			//Lost
+			LoseText.SetActive(true);
 		}
-		if(damage > 0 && haveTreasure)
+		if(damage < 0 && haveTreasure)
 		{
-			//won
+			WinText.SetActive(true);
 		}
 		if(currentHealth < maxHealth * 0.2f && !SFX.isPlaying)
 		{
