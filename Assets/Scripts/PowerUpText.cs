@@ -12,7 +12,6 @@ public class PowerUpText : MonoBehaviour
     void Start()
     {
         total=GameObject.FindGameObjectsWithTag("coin").Length;
-        Debug.Log(total);
     }
     void Update()
     {

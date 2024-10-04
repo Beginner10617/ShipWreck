@@ -17,6 +17,10 @@ public class Player : MonoBehaviour
 	GameObject door;
 	Animator animator;
 	bool haveTreasure;
+	public AudioManager audioManager;
+    AudioSource SFX;
+    AudioClip Coin, Treasure, DoorOpen;
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +29,11 @@ public class Player : MonoBehaviour
 		currentHealth = maxHealth*(0.9999f);
 		healthBar.SetMaxHealth(maxHealth);
 		haveTreasure = false;
+
+        SFX = audioManager.SFX;
+        Coin = audioManager.Coin;
+		Treasure = audioManager.Treasure;
+		DoorOpen = audioManager.DoorOpen;
     }
 
     // Update is called once per frame
@@ -61,6 +70,7 @@ public class Player : MonoBehaviour
 	{
 		if(other.gameObject.CompareTag("coin"))
 		{
+			SFX.PlayOneShot(Coin);
 			Destroy(other.gameObject);
 		}
 		if(other.gameObject.CompareTag("key"))
@@ -72,6 +82,7 @@ public class Player : MonoBehaviour
 		{
 			if(keys.Contains(other.gameObject.GetComponent<Key>().number))
 			{
+				SFX.PlayOneShot(DoorOpen);
 				door = other.gameObject;
 				Destroy(door.GetComponent<BoxCollider2D>());
 				Open();
@@ -79,6 +90,7 @@ public class Player : MonoBehaviour
 		}
 		if(other.gameObject.CompareTag("treasure"))
 		{
+			SFX.PlayOneShot(Treasure);
 			haveTreasure=true;
 		}
 	}
