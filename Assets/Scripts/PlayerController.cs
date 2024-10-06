@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool AndroidController;
+    public GameObject JoystickIcon;
     public float speed = 5f;
+    public InputActionReference playerInput;
     private bool axesInverted = false;
     public List<Sprite> Sprites;
     float moveHorizontal;
@@ -16,6 +20,14 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     void Start()
     {
+        if(!AndroidController)
+        {
+            JoystickIcon.SetActive(false);
+        }
+        else
+        {
+            JoystickIcon.SetActive(true);
+        }
         rb = GetComponent<Rigidbody2D>();
         SFX = audioManager.SFX;
         MoveSound = audioManager.Movement;
@@ -23,25 +35,34 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Get input for movement
-        moveHorizontal = Input.GetAxis("Horizontal");
-        moveVertical = Input.GetAxis("Vertical");
-
-        // Invert axes if Q is pressed
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            axesInverted = !axesInverted;
-        }
-
-        // Apply inversion
-        if (axesInverted)
-        {
-            moveHorizontal = -moveHorizontal;
-            moveVertical = -moveVertical;
-        }
 
         // Move the player
-        movement = new Vector2(moveHorizontal,moveVertical);
+        if(AndroidController)
+        {
+            movement = playerInput.action.ReadValue<Vector2>();
+            moveHorizontal = movement.x;
+            moveVertical = movement.y;
+        }
+        else
+        {
+            // Get input for movement
+            moveHorizontal = Input.GetAxis("Horizontal");
+            moveVertical = Input.GetAxis("Vertical");
+
+            // Invert axes if Q is pressed
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                axesInverted = !axesInverted;
+            }
+
+            // Apply inversion
+            if (axesInverted)
+            {
+                moveHorizontal = -moveHorizontal;
+                moveVertical = -moveVertical;
+            }
+            movement = new Vector2(moveHorizontal,moveVertical);
+        }
         if(moveHorizontal == 0)
         {
             GetComponent<SpriteRenderer>().sprite = Sprites[0];
