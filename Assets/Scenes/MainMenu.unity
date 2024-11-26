@@ -2541,13 +2541,11 @@ MonoBehaviour:
   pauseMenu: {fileID: 109362876}
   pauseButton: {fileID: 1880218925}
   toClose:
-  - {fileID: 0}
   - {fileID: 1797815545}
   - {fileID: 1077620860}
   - {fileID: 1876116506}
   - {fileID: 700025652}
   - {fileID: 1880218925}
-  - {fileID: 0}
   - {fileID: 98022082}
 --- !u!224 &1499843160
 RectTransform:
@@ -2647,13 +2645,11 @@ MonoBehaviour:
   pauseMenu: {fileID: 1623875444}
   pauseButton: {fileID: 700025652}
   toClose:
-  - {fileID: 0}
   - {fileID: 1499843158}
   - {fileID: 1077620860}
   - {fileID: 1876116506}
   - {fileID: 700025652}
   - {fileID: 1880218925}
-  - {fileID: 0}
   - {fileID: 98022082}
 --- !u!224 &1797815547
 RectTransform:
