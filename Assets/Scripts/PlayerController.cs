@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public InputActionReference playerInput;
     private bool axesInverted = false;
     public List<Sprite> Sprites;
+    public Pause pause;
     float moveHorizontal;
     float moveVertical;
     Vector2 movement;
@@ -35,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
+        if(pause.isPaused) return;
         // Move the player
         if(AndroidController)
         {
