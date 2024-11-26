@@ -9,6 +9,7 @@ public class Pause : MonoBehaviour
     public bool isPaused;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject pauseButton;
+    [SerializeField] List<GameObject> toClose;
     void Start()
     {
         isPaused = false;        
@@ -17,6 +18,10 @@ public class Pause : MonoBehaviour
     {
         pauseMenu.SetActive(isPaused);
         pauseButton.SetActive(!isPaused);
+        foreach(GameObject obj in toClose)
+        {
+            obj.SetActive(!isPaused);
+        }
     }
     public void pause()
     {
